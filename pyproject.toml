@@ -1,0 +1,15 @@
+[project]
+name = "piphi-network-official-i2c-library"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "PiPhi Network", email = "kelvin.sanyaolu@gmail.com"},
+]
+dependencies = ["fastapi[standard]>=0.118.2", "aiofiles>=24.1.0", "EasyMCP2221>=1.8.4", "pyserial>=3.5", "bme680>=2.0.0", "pimoroni-bme280>=1.0.0", "aiomqtt>=2.4.0"]
+requires-python = "==3.12.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
