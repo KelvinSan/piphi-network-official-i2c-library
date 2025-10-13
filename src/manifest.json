@@ -1,0 +1,58 @@
+{
+  "name": "PiPhi Network Official I2C lIbrary",
+  "version": "latest",
+  "description": "Integration for I2C devices",
+
+  "image": "piphinetwork/official-i2c-integration",
+  "container": {
+    "ports": [
+      { "container": 3665, "host": 3665 }
+    ],
+    "privileged": true,
+    "environment": {
+      "LOG_LEVEL": "info"
+    },
+    "volumes": [
+      { "host": "/data/i2c", "container": "/app/data" }
+    ],
+    "restart_policy": {
+      "name": "unless-stopped"
+    }
+  },
+
+  "config": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "host": { "type": "string", "format": "ipv4" }
+      },
+      "required": ["host"]
+    },
+    "ui": {
+      "host": {
+        "title": "Device IP",
+        "description": "The local IP address of your Awair Element",
+        "widget": "text"
+      }
+    }
+  },
+
+  "capabilities": [
+    "temperature",
+    "humidity",
+    "co2",
+    "voc",
+    "pm25",
+    "score"
+  ],
+
+  "commands": {
+    "refresh": { "description": "Force refresh device state" }
+  },
+
+  "entities": [
+    { "id": "temperature", "name": "Temperature", "capabilities": ["temperature"], "unit": "°C" },
+    { "id": "humidity", "name": "Humidity", "capabilities": ["humidity"], "unit": "%" },
+    { "id": "co2", "name": "CO₂", "capabilities": ["co2"], "unit": "ppm" }
+  ]
+}
